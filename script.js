@@ -1,91 +1,28 @@
 (async () => {
-  const response = await fetch("/TimeTable/Week")
-  const html = await response.text();
-  const doc = new DOMParser().parseFromString(html, "text/html");
-  const table = doc.querySelector("table.table");
-  // console.log(table.innerHTML);
-  const data = []
-  for (let i = 0; i < 7; i++) {
-    data.push([]);
-  }
+  const table = (new DOMParser().parseFromString((await (await fetch("/TimeTable/Week")).text()), "text/html")).querySelector("table.table");
+  const data = Array.from({length: 7}, () => []);
+  const dateList = Array.from(table.querySelectorAll("thead > tr > th")).map(th => th.innerText.split("\n").map(s => s.trim()).filter(Boolean)[1]);
+  [...table.querySelectorAll("tbody > tr > td")].forEach((td, i) => {
+    if (i % 8 === 0 || td.innerText.trim() === "") return;
+    const dds = td.querySelectorAll("dd");
+    const [start, end] = dds[0].innerText.split(": ")[1].trim().split(" - ").map(n => parseInt(n,10));
+    const summary = td.querySelector("dt > a").innerText.trim();
+    const description = dds[2].innerText.split(": ")[1].trim();
+    const location = dds[1].innerText.split(": ")[1].trim();
+    const dayIndex = i % 8 - 1;
+    const item = {
+      DTSTART: toICSDate(dateList[dayIndex], periodStarts[start]),
+      DTEND:   toICSDate(dateList[dayIndex], periodEnds[end]),
+      SUMMARY: summary,
+      DESCRIPTION: description,
+      LOCATION: location,
+      UID: generateUID(summary, description),
+      RRULE: `RRULE:FREQ=WEEKLY;BYDAY=${["MO","TU","WE","TH","FR","SA","SU"][dayIndex]}`
+    };
+    data[dayIndex].push(item);
+  });
 
-  const dateList = [];
-  for (const th of table.querySelectorAll("thead > tr > th")) {
-    dateList.push(th.innerText.split("\n").map(s => s.trim()).filter(Boolean)[1]);
-  }
-  // console.log(dateList);
-  
-  let i = 0;
-  for (const td of table.querySelectorAll("tbody > tr > td")) {
-    if (i === 0 || i === 8 || i === 16 || td.innerText.trim() === "") {
-      i++;
-      continue;
-    } else {
-      const periodStarts = {
-        "1": "07:00",
-        "2": "08:00",
-        "3": "09:00",
-        "4": "10:00",
-        "5": "13:00",
-        "6": "14:00",
-        "7": "15:00",
-        "8": "16:00",
-        "9": "17:30",
-        "10": "18:25",
-        "11": "19:25",
-        "12": "20:25",
-      };
-      const periodEnds = {
-        "1": "08:00",
-        "2": "09:00",
-        "3": "10:00",
-        "4": "11:00",
-        "5": "14:00",
-        "6": "15:00",
-        "7": "16:00",
-        "8": "17:00",
-        "9": "18:25",
-        "10": "19:25",
-        "11": "20:25",
-        "12": "21:25",
-      };
-      const periodTimes = {
-        "1": 60,
-        "2": 120,
-        "3": 180,
-        "4": 240
-      }
-      const dds = td.querySelectorAll('dd');
-
-      const period = dds[0].innerText.split(": ")[1].trim().split(" - ").map(s => parseInt(s.trim(), 10));
-      
-      const summary = td.querySelector('dt > a').innerText.trim();
-      const description = dds[2].innerText.split(": ")[1].trim();
-      const location = dds[1].innerText.split(": ")[1].trim();
-      
-      const item = {
-        "DTSTART": toICSDate(dateList[i % 8 - 1], periodStarts[period[0].toString()]),
-        "DTEND": toICSDate(dateList[i % 8 - 1], periodEnds[(period[1]).toString()]),
-        "SUMMARY": summary,
-        "DESCRIPTION": description,
-        "LOCATION": location,
-        "UID": generateUID(summary, description),
-        "RRULE": `RRULE:FREQ=WEEKLY;BYDAY=${["MO","TU","WE","TH","FR","SA","SU"][i % 8 - 1]}`,
-      }
-      data.at(i % 8 - 1).push(item);
-      i++;
-    }
-  }
-  console.log(data);
-
-  let ics = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//husc.vn//TimeTable to ICS//EN
-CALSCALE:GREGORIAN
-`;
-
-  data.forEach(day => {
-    day.forEach(item => {
+  data.forEach(day => { day.forEach(item => {
     ics += `
 BEGIN:VEVENT
 UID:${item.UID}
@@ -99,15 +36,10 @@ END:VEVENT
 `
     });
   });
-
   ics += `END:VCALENDAR`;
-
-  // console.log(ics);
-
-  const blob = new Blob([ics], {type: "text/calendar;charset=utf-8"});
-
+  console.log(ics);
   const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
+  link.href = URL.createObjectURL(new Blob([ics], {type: "text/calendar;charset=utf-8"}));
   link.download = "timetable.ics";
   link.click();
 })();
@@ -126,3 +58,23 @@ function generateUID(summary, description) {
   utf8Str.forEach(byte => binary += String.fromCharCode(byte));
   return btoa(binary) + "@student.husc.vn";
 }
+
+const periodStarts = [
+  , 
+  "07:00","08:00","09:00","10:00",
+  "13:00","14:00","15:00","16:00",
+  "17:30","18:25","19:25","20:25"
+];
+
+const periodEnds = [
+  ,
+  "08:00","09:00","10:00","11:00",
+  "14:00","15:00","16:00","17:00",
+  "18:25","19:25","20:25","21:25"
+];
+
+let ics = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//husc.vn//TimeTable to ICS//EN
+CALSCALE:GREGORIAN
+`;
