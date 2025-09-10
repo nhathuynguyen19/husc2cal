@@ -40,13 +40,21 @@ Sau khi chạy script, một popup sẽ hiện hoặc file sẽ tự động dow
 
 #### Đối với iOS (iCloud Calendar)
 - Đính kèm file `timetable.ics` vào và gửi cho email hiện tại được đăng nhập trên điện thoại (iOS).
+
+<img width="593" height="580" alt="image" src="https://github.com/user-attachments/assets/938c7c9e-d3c2-40ae-9b10-08cb1c783a23" />
+
 - Mở Mail trên điện thoại(iOS), vào tin nhắn được gửi trong mục tin nhắn đến và mở file `timetable.ics`
+
+<img width="750" height="1334" alt="image" src="https://github.com/user-attachments/assets/e3b4a39d-9ba5-4982-8c8c-fa7f27ea1e6c" />
+
 - Chọn **Thêm vào Lịch** để nhập lịch vào iPhone/iPad.
 
 #### Đối với Google Calendar
 - Vào Trang nhập lịch của [Google Calendar](https://calendar.google.com/calendar/u/0/r/settings/export)
 - Chọn file `timetable.ics`
 - Chọn lịch và nhập lịch
+
+<img width="1002" height="606" alt="image" src="https://github.com/user-attachments/assets/f68b56f6-46ba-4fe8-aa80-1f1be292616c" />
 
 ---
 
