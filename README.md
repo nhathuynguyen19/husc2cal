@@ -27,7 +27,7 @@ Truy cập [student.husc.edu.vn](https://student.husc.edu.vn) và đăng nhập 
 
 
 ### Bước 3: Dán script
-Copy toàn bộ **script.js** và dán vào console → nhấn Enter
+Copy toàn bộ **[script.js](https://github.com/nhathuynguyen19/husc2cal/blob/main/script.js)** và dán vào console → nhấn Enter
 
 <img width="746" height="782" alt="image" src="https://github.com/user-attachments/assets/125a9825-c9ad-4369-9781-91528a35a7cc" />
 
