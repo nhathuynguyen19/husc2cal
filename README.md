@@ -11,24 +11,27 @@ Let's dive into it! 🚀
 ## Các bước thực hiện
 
 ### Bước 1: Đăng nhập vào trang tín chỉ
-Truy cập [student.husc.edu.vn](https://student.husc.edu.vn) và đăng nhập bằng tài khoản của bạn.
+Truy cập [student.husc.edu.vn](https://student.husc.edu.vn) và đăng nhập bằng tài khoản của bạn
 
 ### Bước 2: Mở DevTools
 - Trên Chrome: `F12` hoặc `Ctrl+Shift+I`  
-- Chuyển sang tab **Console**.
+- Chuyển sang tab **Console**
 
 ### Bước 3: Dán script
-Copy toàn bộ **script.js** và dán vào console → nhấn Enter.
+Copy toàn bộ **script.js** và dán vào console → nhấn Enter
 
 ### Bước 4: Tải file `.ics`
-Sau khi chạy script, một popup sẽ hiện hoặc file sẽ tự động download với tên **timetable.ics**.
+Sau khi chạy script, một popup sẽ hiện hoặc file sẽ tự động download với tên `timetable.ics`
 
-### Bước 5: Import vào Calendar
-- Đính kèm file `.ics` vào email gửi cho bản thân.  
+#### Đối với iOS (iCloud Calendar)
+- Đính kèm file `timetable.ics` vào và gửi cho email hiện tại được đăng nhập trên điện thoại (iOS).
+- Mở Mail trên điện thoại(iOS), vào tin nhắn được gửi trong mục tin nhắn đến và mở file `timetable.ics`
+- Chọn **Thêm vào Lịch** để nhập lịch vào iPhone/iPad.
 
-#### Đối với iOS
-- Mở Mail trên điện thoại, vào tin nhắn được gửi trong mục tin nhắn đến và mở file `.ics`.  
-- Chọn **Thêm vào Lịch** để nhập lịch vào iPhone/iPad.  
+#### Đối với Google Calendar
+- Vào Trang nhập lịch của [Google Calendar](https://calendar.google.com/calendar/u/0/r/settings/export)
+- Chọn file `timetable.ics`
+- Chọn lịch và nhập lịch
 
 ---
 
