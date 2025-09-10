@@ -29,8 +29,14 @@ Truy cập [student.husc.edu.vn](https://student.husc.edu.vn) và đăng nhập 
 ### Bước 3: Dán script
 Copy toàn bộ **script.js** và dán vào console → nhấn Enter
 
+<img width="746" height="782" alt="image" src="https://github.com/user-attachments/assets/125a9825-c9ad-4369-9781-91528a35a7cc" />
+
+
 ### Bước 4: Tải file `.ics`
 Sau khi chạy script, một popup sẽ hiện hoặc file sẽ tự động download với tên `timetable.ics`
+
+<img width="808" height="492" alt="image" src="https://github.com/user-attachments/assets/575cbec5-a36c-462e-b958-638dee346330" />
+
 
 #### Đối với iOS (iCloud Calendar)
 - Đính kèm file `timetable.ics` vào và gửi cho email hiện tại được đăng nhập trên điện thoại (iOS).
