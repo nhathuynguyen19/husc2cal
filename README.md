@@ -13,9 +13,18 @@ Let's dive into it! 🚀
 ### Bước 1: Đăng nhập vào trang tín chỉ
 Truy cập [student.husc.edu.vn](https://student.husc.edu.vn) và đăng nhập bằng tài khoản của bạn
 
+<img width="1589" height="740" alt="image" src="https://github.com/user-attachments/assets/cea016f6-0305-444e-8858-22aeab9a106a" />
+
 ### Bước 2: Mở DevTools
-- Trên Chrome: `F12` hoặc `Ctrl+Shift+I`  
+- Trên Chrome: `F12` hoặc `Ctrl+Shift+I`
+
+<img width="1598" height="749" alt="image" src="https://github.com/user-attachments/assets/55df6d77-b82a-4543-ad34-3fcd280dcb08" />
+
+
 - Chuyển sang tab **Console**
+
+<img width="786" height="794" alt="image" src="https://github.com/user-attachments/assets/454d1b16-47c0-498f-9820-f412eb843e1f" />
+
 
 ### Bước 3: Dán script
 Copy toàn bộ **script.js** và dán vào console → nhấn Enter
