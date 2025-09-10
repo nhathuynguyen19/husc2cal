@@ -39,11 +39,11 @@ Sau khi chạy script, một popup sẽ hiện hoặc file sẽ tự động dow
 
 
 #### Đối với iOS (iCloud Calendar)
-- Đính kèm file `timetable.ics` vào và gửi cho [email](https://mail.google.com/) hiện tại được đăng nhập trên điện thoại (iOS).
+- Đính kèm file `timetable.ics` và gửi cho [email](https://mail.google.com/) được đăng nhập trên điện thoại (iOS).
 
 <img width="593" height="580" alt="image" src="https://github.com/user-attachments/assets/938c7c9e-d3c2-40ae-9b10-08cb1c783a23" />
 
-- Mở Mail trên điện thoại(iOS), vào tin nhắn được gửi trong mục Hộp thư đến và mở file `timetable.ics`
+- Mở Mail trên điện thoại(iOS), mở tin nhắn trong mục Hộp thư đến và bấm vào file `timetable.ics`
 
 <img width="750" height="1334" alt="image" src="https://github.com/user-attachments/assets/e3b4a39d-9ba5-4982-8c8c-fa7f27ea1e6c" />
 
