@@ -16,7 +16,7 @@ const generateUID = (summary, description) => `${btoa(Array.from(new TextEncoder
     const dds = td.querySelectorAll("dd");
     const description = dds[2].innerText.split(": ")[1].trim();
     const location = dds[1].innerText.split(": ")[1].trim();
-    ics += `\nBEGIN:VEVENT\nUID:${generateUID(summary, description)}\nSUMMARY:${summary}\nDTSTART:${toICSDate(dateList[dayIndex], periodStarts[start])}\nDTEND:${toICSDate(dateList[dayIndex], periodEnds[end])}\nDESCRIPTION:${description}\nLOCATION:${location}\nRRULE:FREQ=WEEKLY;BYDAY=${weekDays[dayIndex]}\nBEGIN:VALARM\nTRIGGER:-PT30M\nACTION:DISPLAY\nDESCRIPTION:${description}\nEND:VALARM\nEND:VEVENT\n`;
+    ics += `\nBEGIN:VEVENT\nUID:${generateUID(summary, description)}\nSUMMARY:${summary}\nDTSTART:${toICSDate(dateList[dayIndex], periodStarts[start])}\nDTEND:${toICSDate(dateList[dayIndex], periodEnds[end])}\nDESCRIPTION:${description}\nLOCATION:${location}\nRRULE:FREQ=WEEKLY;BYDAY=${weekDays[dayIndex]}\n\nBEGIN:VALARM\nTRIGGER;RELATED=START:-PT5M\nACTION:DISPLAY\nDESCRIPTION:${description}\nEND:VALARM\n\nBEGIN:VALARM\nTRIGGER;RELATED=START:-PT30M\nACTION:DISPLAY\nDESCRIPTION:${description}\nEND:VALARM\nEND:VEVENT\n`;
   });
   const link = document.createElement("a"); link.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" })); link.download = "timetable.ics"; link.click();
   console.log(ics += `END:VCALENDAR`);
