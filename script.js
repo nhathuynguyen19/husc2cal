@@ -8,4 +8,4 @@
   });
   const link = document.createElement("a"); link.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" })); link.download = "timetable.ics"; link.click();
   console.log(ics += `END:VCALENDAR`);
-})();
+})()
